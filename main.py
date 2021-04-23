@@ -5,6 +5,7 @@ from tkinter.filedialog import askopenfilename
 import pandas as pds
 
 #developer:ravi
+#demo version
 #packages for xcel (xlrd,openpyxl)
 #class Root is main core that connects to all backend logics
 
@@ -14,7 +15,7 @@ class Root(Tk):
     def __init__(self):
         super(Root, self).__init__()
         self.title("ismart data filter")
-        
+        self.wm_iconbitmap('icon.ico')
         self.geometry("330x280") 
         w = Canvas()
         w.pack()
@@ -22,9 +23,7 @@ class Root(Tk):
         style = Style()
         style.configure('y.TButton', font = ('calibri', 15, 'bold'), borderwidth = '4',foreground='red') 
         style.configure('w.TButton', font = ('calibri', 11, 'bold'), foreground = 'black')
-
         self.main()
-        
         self.output()
 
     def import_csv_data(self):
@@ -37,12 +36,37 @@ class Root(Tk):
             print("please upload excel file")
         else:
             print("selected file is under process")
+            window = Tk()
+            window.wm_iconbitmap('icon.ico')
+            window.title("filtering process")
+            window.geometry('350x200')
 
-        return file
-        
-        
-        
-        
+            # Option menu variable
+            optionVar = StringVar()
+            optionVar.set("Red")
+
+            # Create a option menu
+            option = OptionMenu(window, optionVar, "Red", "Blue", "White", "Black")
+            option.pack()
+
+            # Create button with command
+            def show():
+                print("Selected value :", optionVar.get())
+
+            btnShow = Button(window, text="Show", command=show)
+            btnShow.pack()
+            window.mainloop()
+
+            
+
+            # Create button with command
+            def show():
+                print("Selected value :", optionVar.get())
+
+            btnShow = Button(window, text="Show", command=show)
+            btnShow.pack()
+
+            
     #df = pd.read_csv(csv_file_path)
     
     #insert csv or excel file button
@@ -69,9 +93,7 @@ class Root(Tk):
             print("please upload excel file")
         else:
             print("selected file is under process")
-            
-        
-        
+
         #data filter considered as o/p
     def output(self):
         print("uncompleted")
