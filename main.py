@@ -29,10 +29,15 @@ class Root(Tk):
     def import_csv_data(self):
         csv_file_path = askopenfilename()
         print(csv_file_path)
-        file =(csv_file_path) 
+        file =(csv_file_path)
         newData = pds.read_excel(file)
-        row=newData.head(n=0)
-        print(row)
+        pd_xl_file=pds.ExcelFile(file)
+        parsing =pd_xl_file.parse("Sheet1")
+        col_count=len(parsing.axes[1])
+        print("no of collumns is",col_count)
+        print(newData.columns[2])
+        
+        row=newData.head(0)
         datacol = newData.columns
         if file.find('.xlsx')==0:
             print("please upload excel file")
@@ -44,27 +49,26 @@ class Root(Tk):
             window.geometry('350x200')
 
             # Option menu variable
-            optionVar = StringVar()
             
-            for i in row:
-                # Create a option menu
-                
-                option = OptionMenu(window, optionVar, i)
-                option.pack()
+            for i in range(col_count):
+                print (newData.columns[i])
+                columns=newData.columns[i]
+            print(columns)
+            optionVar = StringVar()
+            option = OptionMenu(window, optionVar, "dummy",*columns)
+            option.pack()
 
-                # Create button with command
-                def show():
-                    print("Selected value :", optionVar.get())
+                    # Create button with command
+            def show():
+                print("Selected value :", optionVar.get())
 
                 btnShow = Button(window, text="Show", command=show)
                 btnShow.pack()
                 window.mainloop()
 
-                
-
-                # Create button with command
-                def show():
-                    print("Selected value :", optionVar.get())
+                    # Create button with command
+            def show():
+                print("Selected value :", optionVar.get())
 
                 btnShow = Button(window, text="Show", command=show)
                 btnShow.pack()
