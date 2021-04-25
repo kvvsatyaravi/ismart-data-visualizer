@@ -24,13 +24,15 @@ class Root(Tk):
         style.configure('y.TButton', font = ('calibri', 15, 'bold'), borderwidth = '4',foreground='red') 
         style.configure('w.TButton', font = ('calibri', 11, 'bold'), foreground = 'black')
         self.main()
-        self.output()
+        
 
     def import_csv_data(self):
         csv_file_path = askopenfilename()
         print(csv_file_path)
         file =(csv_file_path) 
         newData = pds.read_excel(file)
+        row=newData.head(n=0)
+        print(row)
         datacol = newData.columns
         if file.find('.xlsx')==0:
             print("please upload excel file")
@@ -43,28 +45,29 @@ class Root(Tk):
 
             # Option menu variable
             optionVar = StringVar()
-            optionVar.set("Red")
-
-            # Create a option menu
-            option = OptionMenu(window, optionVar, "Red", "Blue", "White", "Black")
-            option.pack()
-
-            # Create button with command
-            def show():
-                print("Selected value :", optionVar.get())
-
-            btnShow = Button(window, text="Show", command=show)
-            btnShow.pack()
-            window.mainloop()
-
             
+            for i in row:
+                # Create a option menu
+                
+                option = OptionMenu(window, optionVar, i)
+                option.pack()
 
-            # Create button with command
-            def show():
-                print("Selected value :", optionVar.get())
+                # Create button with command
+                def show():
+                    print("Selected value :", optionVar.get())
 
-            btnShow = Button(window, text="Show", command=show)
-            btnShow.pack()
+                btnShow = Button(window, text="Show", command=show)
+                btnShow.pack()
+                window.mainloop()
+
+                
+
+                # Create button with command
+                def show():
+                    print("Selected value :", optionVar.get())
+
+                btnShow = Button(window, text="Show", command=show)
+                btnShow.pack()
 
             
     #df = pd.read_csv(csv_file_path)
@@ -91,12 +94,14 @@ class Root(Tk):
         data=self.import_csv_data()
         if data.find('.xlsx')==0:
             print("please upload excel file")
+            
         else:
             print("selected file is under process")
+            
 
         #data filter considered as o/p
     def output(self):
-        print("uncompleted")
+        print("uncompleted module")
         
 root =Root()
 
