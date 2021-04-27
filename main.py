@@ -62,17 +62,18 @@ class Root(Tk):
             def show():
                 print("Selected value :", optionVar.get())
 
-                btnShow = Button(window, text="Show", command=show)
-                btnShow.pack()
-                window.mainloop()
+            btnShow = Button(window, text="Show", command=show)
+            btnShow.pack()
+            window.mainloop()
 
-                    # Create button with command
+            
+
+            # Create button with command
             def show():
                 print("Selected value :", optionVar.get())
 
-                btnShow = Button(window, text="Show", command=show)
-                btnShow.pack()
-
+            btnShow = Button(window, text="Show", command=show)
+            btnShow.pack()
             
     #df = pd.read_csv(csv_file_path)
     
@@ -107,6 +108,6 @@ class Root(Tk):
     def output(self):
         print("uncompleted module")
         
-root =Root()
 
+root = Root()
 root.mainloop()
