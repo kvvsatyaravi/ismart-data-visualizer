@@ -1,6 +1,6 @@
-import pandas as pd
-pd_xl_file = pd.ExcelFile("C:/Users/yevad/Desktop/Book1.xlsx")
-df = pd_xl_file.parse("Sheet1")
-
-total_cols=len(df.axes[1])
-print(total_cols)
+num=int(input("enter how many number you want to insert\n"))
+list=[]
+for i in range(0,num):
+       x=int(input("enter no\n"))
+       list.insert(i,x)
+       print(list)

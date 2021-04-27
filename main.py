@@ -47,16 +47,15 @@ class Root(Tk):
             window.geometry('350x200')
 
             # Option menu variable
-            
+            list_col=[]
             for i in range(col_count):
-                list_col=list()
                 col=newData.columns[i]
-                print(col)
-                list_col=list_col.append(col)
+                print("entered column no",i,"column value is",col)
+                list_col.insert(i,col)
             print(list_col)    
-            print(columns)
+            
             optionVar = StringVar()
-            option = OptionMenu(window, optionVar, "dummy",columns)
+            option = OptionMenu(window, optionVar, "dummy",*list_col)
             option.pack()
 
                     # Create button with command
