@@ -6,7 +6,7 @@ import pandas as pds
 
 #developer:ravi
 #demo version
-#packages for xcel (xlrd,openpyxl)
+#packages for excel (xlrd,openpyxl)
 #class Root is main core that connects to all backend logics
 
 class Root(Tk):
@@ -35,8 +35,6 @@ class Root(Tk):
         parsing =pd_xl_file.parse("Sheet1")
         col_count=len(parsing.axes[1])
         print("no of collumns is",col_count)
-        print(newData.columns[2])
-        
         row=newData.head(0)
         datacol = newData.columns
         if file.find('.xlsx')==0:
@@ -51,11 +49,14 @@ class Root(Tk):
             # Option menu variable
             
             for i in range(col_count):
-                print (newData.columns[i])
-                columns=newData.columns[i]
+                list_col=list()
+                col=newData.columns[i]
+                print(col)
+                list_col=list_col.append(col)
+            print(list_col)    
             print(columns)
             optionVar = StringVar()
-            option = OptionMenu(window, optionVar, "dummy",*columns)
+            option = OptionMenu(window, optionVar, "dummy",columns)
             option.pack()
 
                     # Create button with command
