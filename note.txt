@@ -1,1 +1,8 @@
-sheetname should be Sheet1
+install ruqerimentts command
+---------------------
+
+
+Rules
+1.)sheetname should be Sheet1 (default name)
+2.)you should also see once your excel sheet whether it has any  numiercal values  there or not these code only supports for numerical/integer values 
+3.)

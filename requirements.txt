@@ -1,0 +1,4 @@
+###requirements for ismart data visualizer
+xlrd
+pandas
+openpyxl

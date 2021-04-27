@@ -53,9 +53,13 @@ class Root(Tk):
                 print("entered column no",i,"column value is",col)
                 list_col.insert(i,col)
             print(list_col)    
-            
-            optionVar = StringVar()
+
+            l1 = Label(window,  text='Select Column:', width=15 )
+            l1.place(x=45,y=10)
+            optionVar = StringVar(root)
+            optionVar.set("select option")
             option = OptionMenu(window, optionVar, "dummy",*list_col)
+            
             option.pack()
 
                     # Create button with command
@@ -63,6 +67,7 @@ class Root(Tk):
                 print("Selected value :", optionVar.get())
 
             btnShow = Button(window, text="Show", command=show)
+            btnShow.place(x=65,y=510)
             btnShow.pack()
             window.mainloop()
 
