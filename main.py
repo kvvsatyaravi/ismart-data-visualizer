@@ -4,6 +4,7 @@ from tkinter import filedialog
 from tkinter.filedialog import askopenfilename
 import pandas as pds
 
+
 #developer:ravi
 #demo version
 #packages for excel (xlrd,openpyxl)
@@ -24,8 +25,23 @@ class Root(Tk):
         style.configure('y.TButton', font = ('calibri', 15, 'bold'), borderwidth = '4',foreground='red') 
         style.configure('w.TButton', font = ('calibri', 11, 'bold'), foreground = 'black')
         self.main()
+
+    #frontend buttons
+    def main(self):
+        buttonExample1 = Button(text="select file",
+                                style='y.TButton',command=self.import_csv_data)
+        buttonExample1.place(x=20, y=100)
+        
+        buttonExample2 = Button(text="filter",
+                                   style= 'w.TButton',command=self.filter)
+        buttonExample2.place(x=225,y=50)
+
+        buttonExample3 = Button(text="output",
+                                   style="w.TButton",command=self.output)
+        buttonExample3.place(x=225,y=190)
         
 
+    #import_csv_Dat contains logics of filtering process
     def import_csv_data(self):
         csv_file_path = askopenfilename()
         print(csv_file_path)
@@ -52,7 +68,12 @@ class Root(Tk):
                 col=newData.columns[i]
                 print("entered column no",i,"column value is",col)
                 list_col.insert(i,col)
-            print(list_col)    
+            print(list_col)
+
+            def show():
+                specficcol=newData[[optionVar.get()]]
+                print("Selected value :", optionVar.get())
+                print("selected column values:", specficcol)
 
             l1 = Label(window,  text='Select Column:', width=15 )
             l1.place(x=45,y=10)
@@ -61,38 +82,23 @@ class Root(Tk):
             option = OptionMenu(window, optionVar, "dummy",*list_col)
             
             option.pack()
-
-                    # Create button with command
-            def show():
-                specficcol=newData[[optionVar.get()]]
-                print("Selected value :", optionVar.get())
-                print("selected column values:", specficcol)
+            l2 = Label(window,  text='advanced filter:', width=15 )
+            l2.place(x=25,y=80)
+            E1 = Entry(window,width=10)
+            E1.place(x = 110,y = 80)
+            l3 = Label(window,  text='from', width=15 )
+            l3.place(x=130,y=105)
+            E2 = Entry(window,width=10)
+            E2.place(x = 200,y = 80)
+            l4 = Label(window,  text='to', width=15 )
+            l4.place(x=215,y=105)
             btnShow = Button(window, text="Show", command=show)
             btnShow.place(x=65,y=510)
             btnShow.pack()
             window.mainloop()
 
-            
-    #df = pd.read_csv(csv_file_path)
-    
-    #insert csv or excel file button
-    def main(self):
-        buttonExample1 = Button(text="select file",
-                                style='y.TButton',command=self.import_csv_data)
-        buttonExample1.place(x=20, y=100)
-        
 
-        buttonExample2 = Button(text="filter",
-                                   style= 'w.TButton',command=self.filter)
-        buttonExample2.place(x=225,y=50)
-
-        buttonExample3 = Button(text="output",
-                                   style="w.TButton")
-        buttonExample3.place(x=225,y=190)
-        
-
-    #data filter considered as o/p
-    
+    #data filter considered as filtering data logic
     def filter(self):
         data=self.import_csv_data()
         if data.find('.xlsx')==0:
@@ -102,10 +108,11 @@ class Root(Tk):
             print("selected file is under process")
             
 
-        #data filter considered as o/p
+    #output considered as showing filtered data
     def output(self):
-        print("uncompleted module")
-        
+                # Create Object
+        print("under process")
+
 
 root = Root()
 root.mainloop()
