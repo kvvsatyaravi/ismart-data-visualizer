@@ -64,21 +64,14 @@ class Root(Tk):
 
                     # Create button with command
             def show():
+                specficcol=newData[[optionVar.get()]]
                 print("Selected value :", optionVar.get())
-
+                print("selected column values:", specficcol)
             btnShow = Button(window, text="Show", command=show)
             btnShow.place(x=65,y=510)
             btnShow.pack()
             window.mainloop()
 
-            
-
-            # Create button with command
-            def show():
-                print("Selected value :", optionVar.get())
-
-            btnShow = Button(window, text="Show", command=show)
-            btnShow.pack()
             
     #df = pd.read_csv(csv_file_path)
     
