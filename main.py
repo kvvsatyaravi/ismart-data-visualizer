@@ -70,7 +70,7 @@ class Root(Tk):
                 list_col.insert(i,col)
             print(list_col)
 
-            def show():
+            def coldata():
                 specficcol=newData[[optionVar.get()]]
                 print("Selected value :", optionVar.get())
                 print("selected column values:", specficcol)
@@ -79,8 +79,8 @@ class Root(Tk):
             l1.place(x=45,y=25)
             optionVar = StringVar(root)
             optionVar.set("select option")
-            option = OptionMenu(window, optionVar, "dummy",*list_col)
-            option.place(x=170,y=25)
+            option = OptionMenu(window, optionVar, *list_col)
+            option.place(x=130,y=25)
             l2 = Label(window,  text='advanced filter :', width=15 )
             l2.place(x=24,y=100)
             E1 = Entry(window,width=10)
@@ -91,10 +91,10 @@ class Root(Tk):
             E2.place(x = 200,y = 100)
             l4 = Label(window,  text='to', width=15 )
             l4.place(x=215,y=125)
-            btnShow = Button(window, text="Show", command=show)
+            btnShow = Button(window, text="Column values", command=coldata)
             btnShow.place(x=130,y=50)
             
-            btnShow2 = Button(window, text="Submit", command=show)
+            btnShow2 = Button(window, text="Submit")
             btnShow2.place(x=130,y=150)
             
             window.mainloop()
