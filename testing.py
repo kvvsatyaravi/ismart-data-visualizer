@@ -8,9 +8,10 @@ csv_file_path = askopenfilename()
 
 file =(csv_file_path)
 df=pd.read_excel(file)
-
-mask =  df['Order Quantity'].values <= 2 
-
-df_new = df.loc[mask]
-print(df_new)
-df_new.to_excel('./test.xlsx')
+first=int(input())
+second=int(input())
+for i in range(first,second):
+    mask =  df['Order Quantity'].values <= i 
+    df_new = df.loc[mask]
+    print(df_new)
+    df_new.to_excel('./test.xlsx')
