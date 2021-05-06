@@ -76,25 +76,27 @@ class Root(Tk):
                 print("selected column values:", specficcol)
 
             l1 = Label(window,  text='Select Column:', width=15 )
-            l1.place(x=45,y=10)
+            l1.place(x=45,y=25)
             optionVar = StringVar(root)
             optionVar.set("select option")
             option = OptionMenu(window, optionVar, "dummy",*list_col)
-            
-            option.pack()
-            l2 = Label(window,  text='advanced filter:', width=15 )
-            l2.place(x=25,y=80)
+            option.place(x=170,y=25)
+            l2 = Label(window,  text='advanced filter :', width=15 )
+            l2.place(x=24,y=100)
             E1 = Entry(window,width=10)
-            E1.place(x = 110,y = 80)
+            E1.place(x = 120,y = 100)
             l3 = Label(window,  text='from', width=15 )
-            l3.place(x=130,y=105)
+            l3.place(x=130,y=125)
             E2 = Entry(window,width=10)
-            E2.place(x = 200,y = 80)
+            E2.place(x = 200,y = 100)
             l4 = Label(window,  text='to', width=15 )
-            l4.place(x=215,y=105)
+            l4.place(x=215,y=125)
             btnShow = Button(window, text="Show", command=show)
-            btnShow.place(x=65,y=510)
-            btnShow.pack()
+            btnShow.place(x=130,y=50)
+            
+            btnShow2 = Button(window, text="Submit", command=show)
+            btnShow2.place(x=130,y=150)
+            
             window.mainloop()
 
 
