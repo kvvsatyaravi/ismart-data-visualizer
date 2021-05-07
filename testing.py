@@ -31,17 +31,19 @@ from tkinter.ttk import *
 from tkinter import filedialog
 from tkinter.filedialog import askopenfilename
 import pandas as pd
+import os
 
 def create_excel():
     firstval = int(E1.get())
     secondval = int(E2.get())
+    
     for i in range(firstval,secondval):
-        mask =  df['Sales'].values <= i 
-        df_new = df.loc[mask]
-        print(df_new)
-        
-        df_new.to_excel("./test1.xlsx")
-        
+        print(i)
+    """  df_tech_select_columns = df.loc[df['Sales'] <=  i ]
+        print(df_tech_select_columns)
+        df_tech_select_columns.to_excel("./test.xlsx")"""
+
+    
 
 window=Tk()
 window.title("testing")
