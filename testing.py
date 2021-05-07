@@ -36,8 +36,6 @@ import os
 def create_excel():
     firstval = int(E1.get())
     secondval = int(E2.get())
-
-    
     df_tech_select_columns = df.loc[(df['Sales'] >= firstval) & (df['Sales'] <= secondval )]
     print(df_tech_select_columns)
     df_tech_select_columns.to_excel("./test.xlsx")

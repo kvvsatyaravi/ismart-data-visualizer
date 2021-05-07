@@ -75,6 +75,15 @@ class Root(Tk):
                 print("Selected value :", optionVar.get())
                 print("selected column values:", specficcol)
 
+
+            def create_excel():
+                firstval = int(E1.get())
+                secondval = int(E2.get())
+                optionval = optionVar.get()
+                df_tech_select_columns = newData.loc[(newData[optionval] >= firstval) & (newData[optionval] <= secondval )]
+                print(df_tech_select_columns)
+                df_tech_select_columns.to_excel("./test.xlsx")
+
             l1 = Label(window,  text='Select Column:', width=15 )
             l1.place(x=45,y=25)
             optionVar = StringVar(root)
@@ -83,6 +92,7 @@ class Root(Tk):
             option.place(x=130,y=25)
             l2 = Label(window,  text='advanced filter :', width=15 )
             l2.place(x=24,y=100)
+            selnum= StringVar(root)
             E1 = Entry(window,width=10)
             E1.place(x = 120,y = 100)
             l3 = Label(window,  text='from', width=15 )
@@ -94,7 +104,7 @@ class Root(Tk):
             btnShow = Button(window, text="Column values", command=coldata)
             btnShow.place(x=130,y=50)
             
-            btnShow2 = Button(window, text="Submit")
+            btnShow2 = Button(window, text="Submit",command=create_excel)
             btnShow2.place(x=130,y=150)
             
             window.mainloop()
