@@ -42,21 +42,24 @@ class Root(Tk):
 
     #import_csv_Dat contains logics of filtering process
     def import_data(self):
+        global file_path
         file_path = askopenfilename()
-        print(file_path)
-        file =(file_path)
 
-        if file.find('.xlsx') == 1:
-            xlsxfile()            
-        elif file.find('.csv') == 1:
-            csvfile()
+        if file_path.find('.xlsx'):
+            self.xlsxfile()            
+
+        elif file_path.find('.csv'):
+            self.csvfile()
+
         else:
             print("cannot find excel file and csv file")
             return 0
 
     def xlsxfile(self):
-        newData = pds.read_excel(file)
-        pd_xl_file = pds.ExcelFile(file)
+        newData = pds.read_excel(file_path)
+        pd_xl_file = pds.ExcelFile(file_path)
+        print(newData)
+        
         parsing = pd_xl_file.parse("Sheet1")
         col_count = len(parsing.axes[1])
         print("no of collumns is",col_count)
@@ -72,10 +75,9 @@ class Root(Tk):
         list_col=[]
         for i in range(col_count):
             col=newData.columns[i]
-            print("entered column no",i,"column value is",col)
             list_col.insert(i,col)
-            print(list_col)
 
+        
         def coldata():
             specficcol=newData[[optionVar.get()]]
             print("Selected value :", optionVar.get())
@@ -90,6 +92,8 @@ class Root(Tk):
             print(df_tech_select_columns)
             df_tech_select_columns.to_excel("./test.xlsx")
 
+        print("entered column no",i,"column value is",col)
+        print(list_col)
         l1 = Label(window,  text='Select Column:', width=15 )
         l1.place(x=45,y=25)
         optionVar = StringVar(root)
