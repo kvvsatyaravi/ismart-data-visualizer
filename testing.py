@@ -45,15 +45,15 @@ class Root(Tk):
         global file_path
         file_path = askopenfilename()
 
-        if file_path.find('.xlsx'):
-            self.xlsxfile()            
+        if file_path.find('.csv'):
+            self.csvfile()            
 
-        elif file_path.find('.csv'):
-            self.csvfile()
+        elif file_path.find('.xlsx'):
+            self.xlsxfile()
 
         else:
             print("cannot find excel file and csv file")
-            return 0
+            
 
     def xlsxfile(self):
         newData = pds.read_excel(file_path)
@@ -119,8 +119,10 @@ class Root(Tk):
         window.mainloop()
 
     def csvfile(self):
-        print("underprocess")
-        
+        newData = pds.read_csv(file_path)
+        print(newData)        
+        list_of_column_names = list(newData.columns)
+        print(list_of_column_names)
 
 
     #data filter considered as filtering data logic
