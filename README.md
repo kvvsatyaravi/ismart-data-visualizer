@@ -11,7 +11,7 @@ pip install -r requirements.txt
 ```
 
 ## instructions 
-1.)run main.py
-2.)click select file or filter button
-3.)select order with nulls.xlsx file
-4.)select any column and click show button you can see output in console
+- run main.py
+- click select file or filter button
+- select order with nulls.xlsx file
+- select any column and click show button you can see output in console
