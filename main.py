@@ -90,7 +90,7 @@ class Root(Tk):
             optionval = optionVar.get()
             df_tech_select_columns = newData.loc[(newData[optionval] >= firstval) & (newData[optionval] <= secondval )]
             print(df_tech_select_columns)
-            df_tech_select_columns.to_excel("./test.xlsx")
+            df_tech_select_columns.to_excel("output/excel/test.xlsx")
 
         print("entered column no",i,"column value is",col)
         print(list_col)
@@ -109,7 +109,7 @@ class Root(Tk):
         l3.place(x=130,y=125)
         E2 = Entry(window,width=10)
         E2.place(x = 200,y = 100)
-        l4 = Label(window,  text='to', width=15 )
+        l4 = Label(window,  text='upto', width=15 )
         l4.place(x=215,y=125)
         btnShow = Button(window, text="Column values", command=coldata)
         btnShow.place(x=130,y=50)    
@@ -122,7 +122,56 @@ class Root(Tk):
         newData = pds.read_csv(file_path)
         print(newData)        
         list_of_column_names = list(newData.columns)
-        print(list_of_column_names)
+        print("first row values:",list_of_column_names)
+
+        #gui frontend for csv filtering
+        window = Tk()
+        window.wm_iconbitmap('icon.ico')
+        window.title("filtering process")
+        window.geometry('350x200')
+
+        #coldata function prints the selected column values
+        def coldata():
+            specficcol=newData[[optionVar.get()]]
+            print("Selected value :", optionVar.get())
+            print("selected column values:", specficcol)
+
+
+        #create_csv function filter the records
+        def create_csv():
+            firstval = int(E1.get())
+            secondval = int(E2.get())
+            optionval = optionVar.get()
+            df_tech_select_columns = newData.loc[(newData[optionval] >= firstval) & (newData[optionval] <= secondval )]
+            print(df_tech_select_columns)
+            df_tech_select_columns.to_csv("output/csv/test.csv")
+            
+        
+        l1 = Label(window,  text='Select Column:', width=15 )
+        l1.place(x=45,y=25)
+        optionVar = StringVar(root)
+        optionVar.set("select option")
+        option = OptionMenu(window, optionVar, *list_of_column_names)
+        option.place(x=130,y=25)
+
+        l2 = Label(window,  text='advanced filter :', width=15 )
+        l2.place(x=24,y=100)
+        selnum= StringVar(root)
+        E1 = Entry(window,width=10)
+        E1.place(x = 120,y = 100)
+        l3 = Label(window,  text='from', width=15 )
+        l3.place(x=130,y=125)
+        E2 = Entry(window,width=10)
+        E2.place(x = 200,y = 100)
+        l4 = Label(window,  text='upto', width=15 )
+        l4.place(x=215,y=125)
+        btnShow = Button(window, text="Column values",command = coldata)
+        btnShow.place(x=130,y=50)    
+        btnShow2 = Button(window, text="Submit",command = create_csv)
+        btnShow2.place(x=130,y=150)
+            
+        window.mainloop()
+        
 
 
     #data filter considered as filtering data logic
