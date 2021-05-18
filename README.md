@@ -2,7 +2,7 @@
 demo version 
 
 # Description
-ismart data visualizer is a tool it is used to filter the data of excel,csv files.now it is demo version
+ismart data visualizer is a tool it is used to filter the data of excel,csv files. now it is demo version
 
 ## Installation
 ```
